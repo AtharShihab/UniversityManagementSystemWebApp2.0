@@ -8,7 +8,7 @@ namespace UniversityManagementSystemWebApp2._0.Models
 {
     public class Department
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(255)]

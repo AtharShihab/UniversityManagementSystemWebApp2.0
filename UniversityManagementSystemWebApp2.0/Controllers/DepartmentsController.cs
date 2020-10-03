@@ -9,35 +9,23 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
 {
     public class DepartmentsController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public DepartmentsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Departments
         public ActionResult Index()
         {
-            var departments = new List<Department>
-            {
-                new Department {
-                    Id = 1,
-                    Name = "Computer Science & Engineering",
-                    Code = "CSE"
-                },
-                new Department
-                {
-                    Id = 2,
-                    Name = "Electrical & Electronics Engineering",
-                    Code = "EEE"
-                },
-                new Department
-                {
-                    Id = 3,
-                    Name = "Mathemetics",
-                    Code = "MATH"
-                },
-                new Department
-                {
-                    Id = 4,
-                    Name = "Physics",
-                    Code = "PHY"
-                }
-            };
+            var departments = _context.Departments.ToList();
+
             return View(departments);
         }
 
@@ -46,6 +34,16 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
         public ActionResult New()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Save(Department department)
+        {
+            _context.Departments.Add(department);
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index", "Departments");
         }
     }
 }
