@@ -1,0 +1,21 @@
+﻿@model UniversityManagementSystemWebApp2._0.Models.Department
+@{
+    ViewBag.Title = "Save Department";
+}
+
+<h2>Save Department</h2>
+
+@using (Html.BeginForm("Save", "Department"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Code)
+        @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+}

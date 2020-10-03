@@ -1,0 +1,31 @@
+﻿@model IEnumerable<UniversityManagementSystemWebApp2._0.Models.Department>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View All Departments</h2>
+
+<p>@Html.ActionLink("Save Department", "New", "Departments", new { @class = "btn btn-primary" })</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var department in Model)
+        {
+            <tr>
+                <td>@department.Code</td>
+                <td>@department.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
