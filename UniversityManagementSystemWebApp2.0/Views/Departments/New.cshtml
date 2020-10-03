@@ -1,4 +1,4 @@
-﻿@model UniversityManagementSystemWebApp2._0.Models.Department
+﻿@model UniversityManagementSystemWebApp2._0.ViewModels.DepartmentFormViewModel
 @{
     ViewBag.Title = "Save Department";
 }
@@ -7,15 +7,31 @@
 
 @using (Html.BeginForm("Save", "Departments"))
 {
+    @Html.ValidationSummary()
+    if (Model.ErrorMessage != null)
+    {
+        <div class="validation-summary-errors">
+            <ul>
+                <li>@Model.ErrorMessage</li>
+            </ul>
+        </div>
+    }
     <div class="form-group">
         @Html.LabelFor(m => m.Code)
         @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Code)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
 
     <button class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

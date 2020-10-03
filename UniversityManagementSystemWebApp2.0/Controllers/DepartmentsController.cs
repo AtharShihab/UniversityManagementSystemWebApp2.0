@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UniversityManagementSystemWebApp2._0.Models;
+using UniversityManagementSystemWebApp2._0.ViewModels;
 
 namespace UniversityManagementSystemWebApp2._0.Controllers
 {
@@ -33,15 +34,35 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
         
         public ActionResult New()
         {
-            return View();
+            var viewModel = new DepartmentFormViewModel();
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Save(Department department)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New", department);
+            }
+
+            //IsUnique Check
+            var departments = _context.Departments.Where(d => d.Code == department.Code || d.Name == department.Name).ToList();
+            if (departments.Count != 0)
+            {
+                var viewModel = new DepartmentFormViewModel
+                {
+                    Code = department.Code,
+                    Name = department.Name,
+                    ErrorMessage = "Department Name & Code must be Unique"
+                };
+                
+                return View("New", viewModel);
+            }
+
+
             _context.Departments.Add(department);
             _context.SaveChanges();
-
 
             return RedirectToAction("Index", "Departments");
         }
