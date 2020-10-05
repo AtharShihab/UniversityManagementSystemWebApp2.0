@@ -10,7 +10,7 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public DepartmentsController()
         {
@@ -46,6 +46,7 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
                 return View("New", department);
             }
 
+
             //IsUnique Check
             var departments = _context.Departments.Where(d => d.Code == department.Code || d.Name == department.Name).ToList();
             if (departments.Count != 0)
@@ -59,6 +60,9 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
                 
                 return View("New", viewModel);
             }
+            //IsUnique Check end
+
+
 
 
             _context.Departments.Add(department);

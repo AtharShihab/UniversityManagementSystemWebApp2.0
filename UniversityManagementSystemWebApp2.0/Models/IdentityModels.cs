@@ -20,6 +20,8 @@ namespace UniversityManagementSystemWebApp2._0.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Semester> Semesters { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<Department> Departments { get; set; }
 
         public ApplicationDbContext()

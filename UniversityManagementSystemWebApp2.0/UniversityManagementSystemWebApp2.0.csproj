@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -190,13 +191,24 @@
     <Compile Include="Migrations\202010031226227_AddIsUniqueDataAnnotationToDeptNameAndCode.Designer.cs">
       <DependentUpon>202010031226227_AddIsUniqueDataAnnotationToDeptNameAndCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010040926495_AddCourse.cs" />
+    <Compile Include="Migrations\202010040926495_AddCourse.Designer.cs">
+      <DependentUpon>202010040926495_AddCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010040935195_PopulateSemester.cs" />
+    <Compile Include="Migrations\202010040935195_PopulateSemester.Designer.cs">
+      <DependentUpon>202010040935195_PopulateSemester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Semester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CourseFormViewModel.cs" />
     <Compile Include="ViewModels\DepartmentFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +271,8 @@
     <Content Include="Views\Departments\Index.cshtml" />
     <Content Include="Views\Departments\New.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Courses\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010031226227_AddIsUniqueDataAnnotationToDeptNameAndCode.resx">
       <DependentUpon>202010031226227_AddIsUniqueDataAnnotationToDeptNameAndCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010040926495_AddCourse.resx">
+      <DependentUpon>202010040926495_AddCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010040935195_PopulateSemester.resx">
+      <DependentUpon>202010040935195_PopulateSemester.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
