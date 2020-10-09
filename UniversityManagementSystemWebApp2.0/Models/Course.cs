@@ -11,6 +11,7 @@ namespace UniversityManagementSystemWebApp2._0.Models
     {
         public int Id { get; set; }
 
+        //It seems that a string cannot be made unique unless a stringlength is specified
         [Required]
         [StringLength(255)]
         [Index(IsUnique = true)]

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using UniversityManagementSystemWebApp2._0.Models;
+using UniversityManagementSystemWebApp2._0.ViewModels;
 
 namespace UniversityManagementSystemWebApp2._0.Controllers
 {
