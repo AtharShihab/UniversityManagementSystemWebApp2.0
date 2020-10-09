@@ -1,7 +1,31 @@
-﻿@model UniversityManagementSystemWebApp2._0.Models.Course
+﻿@model IEnumerable<UniversityManagementSystemWebApp2._0.Models.Course>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "View All Courses";
 }
 
-<h2>Index</h2>
+<h2>View All Courses</h2>
+
+<p>@Html.ActionLink("Save Course", "New", "Course", new { @class = "btn btn-primary" })</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var course in Model)
+        {
+            <tr>
+                <td>@course.Code</td>
+                <td>@course.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
 

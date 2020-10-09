@@ -1,0 +1,62 @@
+﻿@model UniversityManagementSystemWebApp2._0.ViewModels.TeacherFormViewModel
+@{
+    ViewBag.Title = "Save Teacher";
+}
+
+<h2>Save Teacher</h2>
+
+@using (Html.BeginForm("Save", "Teachers"))
+{
+    @Html.ValidationSummary()
+    if (Model.ErrorMessage != null)
+    {
+        <div class="validation-summary-errors">
+            <ul>
+                <li>@Model.ErrorMessage</li>
+            </ul>
+        </div>
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ContactNo)
+        @Html.TextAreaFor(m => m.ContactNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ContactNo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DesignationId)
+        @Html.DropDownListFor(m => m.DesignationId, new SelectList(Model.Designations, "Id", "Name"), "Select a Designation", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DesignationId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DepartmentId)
+        @Html.DropDownListFor(m => m.DepartmentId, new SelectList(Model.Departments, "Id", "Code"), "Select a Department", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DepartmentId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CreditToBeTaken)
+        @Html.TextBoxFor(m => m.CreditToBeTaken, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CreditToBeTaken)
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

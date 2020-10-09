@@ -26,7 +26,8 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
         // GET: Courses
         public ActionResult Index()
         {
-            return View();
+            var courses = _context.Courses.ToList();
+            return View(courses);
         }
 
         public ActionResult New()
@@ -85,7 +86,7 @@ namespace UniversityManagementSystemWebApp2._0.Controllers
             _context.Courses.Add(course);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Courses");
         }
     }
 }
